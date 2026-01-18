@@ -31,7 +31,7 @@ export const CTASection = () => {
             transition={{ delay: 0.2, duration: 0.4 }}
             className="pt-4"
           >
-            <a href="https://hiddenpay.xyz" className="inline-flex items-center justify-center gap-2 bg-background text-foreground font-semibold px-10 py-5 rounded-full text-lg hover:bg-background/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
+            <a href="https://app.hiddenpay.xyz" className="inline-flex items-center justify-center gap-2 bg-background text-foreground font-semibold px-10 py-5 rounded-full text-lg hover:bg-background/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
               Reserve Username Now
               <ArrowRight className="w-5 h-5" />
             </a>

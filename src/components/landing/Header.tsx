@@ -43,10 +43,10 @@ export const Header = () => {
 
           {/* CTA */}
           <div className="flex items-center gap-4">
-            <a href="https://hiddenpay.xyz" className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <a href="https://app.hiddenpay.xyz" className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Sign In
             </a>
-            <a href="https://hiddenpay.xyz" className="bg-foreground text-background text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-foreground/90 transition-colors">
+            <a href="https://app.hiddenpay.xyz" className="bg-foreground text-background text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-foreground/90 transition-colors">
               Get Started
             </a>
             <button className="md:hidden p-2 hover:bg-secondary rounded-lg transition-colors">

@@ -79,11 +79,11 @@ export const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <a href="https://hiddenpay.xyz" className="btn-primary inline-flex items-center justify-center gap-2">
+              <a href="https://app.hiddenpay.xyz" className="btn-primary inline-flex items-center justify-center gap-2">
                 Reserve Username
                 <ArrowRight className="w-5 h-5" />
               </a>
-              <a href="https://hiddenpay.xyz" className="btn-secondary inline-flex items-center justify-center">
+              <a href="https://app.hiddenpay.xyz" className="btn-secondary inline-flex items-center justify-center">
                 See How It Works
               </a>
             </div>
