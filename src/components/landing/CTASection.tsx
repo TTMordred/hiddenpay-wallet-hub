@@ -1,57 +1,44 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 export const CTASection = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="section-padding bg-foreground text-background">
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto text-center space-y-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 glass-card text-sm font-medium">
-            <Sparkles className="w-4 h-4 text-wallet-savings" />
-            Limited Early Access
-          </div>
-
-          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
-            Claim your unique{" "}
-            <span className="font-mono text-gradient">@username</span>
+          <h2 className="heading-lg text-background">
+            Claim your{" "}
+            <span className="font-mono">@username</span>
             <br />
             before it's taken.
           </h2>
 
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+          <p className="text-lg text-background/70 max-w-xl mx-auto">
             Join thousands of early adopters simplifying their crypto identity.
             Premium usernames are going fast.
           </p>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+            className="pt-4"
           >
-            <Button
-              size="lg"
-              className="glow-button text-lg px-10 py-7 rounded-xl font-semibold"
-            >
+            <button className="inline-flex items-center justify-center gap-2 bg-background text-foreground font-semibold px-10 py-5 rounded-full text-lg hover:bg-background/90 transition-all hover:scale-[1.02] active:scale-[0.98]">
               Reserve Username Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
+              <ArrowRight className="w-5 h-5" />
+            </button>
           </motion.div>
 
-          <p className="text-sm text-muted-foreground">
-            No credit card required • Free to claim • Instant setup
+          <p className="text-sm text-background/50">
+            No credit card required · Free to claim · Instant setup
           </p>
         </motion.div>
       </div>

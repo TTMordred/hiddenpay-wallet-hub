@@ -1,23 +1,22 @@
 import { motion } from "framer-motion";
-import { Wallet, Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu } from "lucide-react";
 
 export const Header = () => {
   return (
     <motion.header
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50"
+      transition={{ duration: 0.4 }}
+      className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border"
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <Wallet className="w-5 h-5 text-primary-foreground" />
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
+              <span className="text-background font-bold text-sm">H</span>
             </div>
-            <span className="font-bold text-xl">HiddenPay</span>
+            <span className="font-bold text-lg">HiddenPay</span>
           </div>
 
           {/* Desktop Nav */}
@@ -44,13 +43,15 @@ export const Header = () => {
 
           {/* CTA */}
           <div className="flex items-center gap-4">
-            <Button variant="ghost" className="hidden sm:inline-flex">
+            <button className="hidden sm:inline-flex text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Sign In
-            </Button>
-            <Button className="rounded-xl">Get Started</Button>
-            <Button variant="ghost" size="icon" className="md:hidden">
+            </button>
+            <button className="bg-foreground text-background text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-foreground/90 transition-colors">
+              Get Started
+            </button>
+            <button className="md:hidden p-2 hover:bg-secondary rounded-lg transition-colors">
               <Menu className="w-5 h-5" />
-            </Button>
+            </button>
           </div>
         </div>
       </div>

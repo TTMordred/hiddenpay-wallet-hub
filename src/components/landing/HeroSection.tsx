@@ -1,12 +1,6 @@
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const chaosWallets = [
-  { address: "0x5f3a...2a9c", delay: 0, x: -20, y: -30, rotate: -8 },
-  { address: "0x9c7b...b1e4", delay: 0.1, x: 40, y: 10, rotate: 5 },
-  { address: "0x2d1e...f8a2", delay: 0.2, x: -10, y: 40, rotate: -3 },
-];
 
 const linkedWallets = [
   { name: "Trading", type: "trading" as const, address: "0x5f3a...2a9c" },
@@ -21,163 +15,160 @@ const walletBadgeStyles = {
 };
 
 export const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen hero-gradient overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/5 rounded-full blur-3xl" />
-      </div>
+  const [titleNumber, setTitleNumber] = useState(0);
+  const titles = useMemo(
+    () => ["organized", "unified", "secure", "simple", "seamless"],
+    []
+  );
 
-      <div className="container mx-auto px-6 pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === titles.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
+
+  return (
+    <section className="min-h-screen flex items-center pt-20">
+      <div className="container mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Left: Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="space-y-8"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 glass-card text-sm font-medium text-muted-foreground">
-              <span className="w-2 h-2 bg-wallet-spending rounded-full animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary rounded-full text-sm font-medium">
+              <span className="w-2 h-2 bg-[hsl(var(--wallet-spending))] rounded-full" />
               Multi-Wallet Aggregation
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
-              Stop juggling{" "}
-              <span className="font-mono text-muted-foreground">0x</span>{" "}
-              addresses.
-              <br />
-              <span className="text-gradient">Start using your Name.</span>
+            <h1 className="heading-xl">
+              <span className="block text-muted-foreground font-medium text-2xl md:text-3xl mb-4">
+                Stop juggling <span className="font-mono">0x</span> addresses.
+              </span>
+              <span className="block">Make crypto</span>
+              <span className="relative flex h-[1.2em] overflow-hidden">
+                {titles.map((title, index) => (
+                  <motion.span
+                    key={index}
+                    className="absolute"
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={
+                      titleNumber === index
+                        ? { y: 0, opacity: 1 }
+                        : { y: titleNumber > index ? -100 : 100, opacity: 0 }
+                    }
+                    transition={{ type: "spring", stiffness: 80, damping: 20 }}
+                  >
+                    {title}.
+                  </motion.span>
+                ))}
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground max-w-lg leading-relaxed">
               Link all your Sui wallets under one unique{" "}
               <span className="font-mono font-semibold text-foreground">@username</span>.
-              Manage your Spending, Savings, and Trading assets in a single dashboard.
+              Manage everything in a single dashboard.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="glow-button text-lg px-8 py-6 rounded-xl">
-                Reserve Username Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="text-lg px-8 py-6 rounded-xl border-2"
-              >
+            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <button className="btn-primary inline-flex items-center justify-center gap-2">
+                Reserve Username
+                <ArrowRight className="w-5 h-5" />
+              </button>
+              <button className="btn-secondary">
                 See How It Works
-              </Button>
+              </button>
             </div>
           </motion.div>
 
-          {/* Right: Chaos vs Order Visual */}
+          {/* Right: Profile Card */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="relative"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center lg:justify-end"
           >
-            <div className="flex items-center justify-center gap-6">
-              {/* Chaos State */}
-              <div className="relative w-48 h-64">
-                <p className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-medium text-muted-foreground">
-                  Before
-                </p>
-                {chaosWallets.map((wallet, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      x: wallet.x,
-                      rotate: wallet.rotate,
-                    }}
-                    transition={{
-                      delay: wallet.delay + 0.5,
-                      duration: 0.5,
-                    }}
-                    className="absolute glass-card p-4 w-44 animate-float"
-                    style={{
-                      top: `${30 + i * 60}px`,
-                      animationDelay: `${i * 0.3}s`,
-                    }}
-                  >
-                    <div className="flex items-center gap-2">
-                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
-                        <span className="text-xs">🔐</span>
-                      </div>
-                      <span className="font-mono text-xs text-muted-foreground truncate">
-                        {wallet.address}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Arrow */}
+            <div className="relative">
+              {/* Floating chaos wallets */}
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 1.2, duration: 0.4 }}
-                className="flex flex-col items-center gap-2"
+                initial={{ opacity: 0, x: -40, rotate: -12 }}
+                animate={{ opacity: 0.6, x: 0, rotate: -12 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="absolute -left-16 top-8 card-modern p-3 text-xs font-mono text-muted-foreground hidden lg:block"
               >
-                <ArrowRight className="w-8 h-8 text-primary" />
-                <span className="text-xs text-muted-foreground font-medium">Link</span>
+                0x5f3a...2a9c
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 40, rotate: 8 }}
+                animate={{ opacity: 0.6, x: 0, rotate: 8 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="absolute -right-12 top-4 card-modern p-3 text-xs font-mono text-muted-foreground hidden lg:block"
+              >
+                0x9c7b...b1e4
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 40, rotate: -6 }}
+                animate={{ opacity: 0.6, y: 0, rotate: -6 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="absolute -left-8 -bottom-8 card-modern p-3 text-xs font-mono text-muted-foreground hidden lg:block"
+              >
+                0x2d1e...f8a2
               </motion.div>
 
-              {/* Order State - Profile Card */}
+              {/* Main Profile Card */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.4, duration: 0.6 }}
-                className="relative"
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="card-modern p-8 w-80 space-y-6 relative z-10"
               >
-                <p className="absolute -top-8 left-1/2 -translate-x-1/2 text-sm font-medium text-muted-foreground">
-                  After
-                </p>
-                <div className="glass-card p-6 w-64 space-y-4 border-primary/20">
-                  {/* Profile Header */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-lg">
-                      M
-                    </div>
-                    <div>
-                      <p className="font-bold text-lg">@Mordred</p>
-                      <p className="text-xs text-muted-foreground">3 wallets linked</p>
-                    </div>
+                {/* Profile Header */}
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-2xl bg-foreground flex items-center justify-center text-background font-bold text-2xl">
+                    M
+                  </div>
+                  <div>
+                    <p className="font-bold text-xl">@Mordred</p>
+                    <p className="text-sm text-muted-foreground">3 wallets linked</p>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="h-px bg-border" />
+
+                {/* Dropdown */}
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <span className="font-medium">Linked Wallets</span>
+                    <ChevronDown className="w-4 h-4" />
                   </div>
 
-                  {/* Dropdown */}
-                  <div className="space-y-2 pt-2 border-t border-border">
-                    <div className="flex items-center justify-between text-sm text-muted-foreground">
-                      <span>Linked Wallets</span>
-                      <ChevronDown className="w-4 h-4" />
-                    </div>
-
-                    {linkedWallets.map((wallet, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.8 + i * 0.15, duration: 0.3 }}
-                        className="flex items-center justify-between p-2 rounded-lg bg-muted/50"
+                  {linkedWallets.map((wallet, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.8 + i * 0.1, duration: 0.3 }}
+                      className="flex items-center justify-between p-3 rounded-xl bg-secondary"
+                    >
+                      <span
+                        className={`px-3 py-1 rounded-lg text-xs font-semibold ${walletBadgeStyles[wallet.type]}`}
                       >
-                        <div className="flex items-center gap-2">
-                          <span
-                            className={`px-2 py-0.5 rounded text-xs font-medium ${walletBadgeStyles[wallet.type]}`}
-                          >
-                            {wallet.name}
-                          </span>
-                        </div>
-                        <span className="font-mono text-xs text-muted-foreground">
-                          {wallet.address}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
+                        {wallet.name}
+                      </span>
+                      <span className="font-mono text-xs text-muted-foreground">
+                        {wallet.address}
+                      </span>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             </div>

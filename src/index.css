@@ -2,59 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 234 47% 14%;
+    --foreground: 240 10% 6%;
 
     --card: 0 0% 100%;
-    --card-foreground: 234 47% 14%;
+    --card-foreground: 240 10% 6%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 234 47% 14%;
+    --popover-foreground: 240 10% 6%;
 
-    --primary: 234 89% 54%;
+    --primary: 240 6% 10%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 234 30% 96%;
-    --secondary-foreground: 234 47% 14%;
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 6% 10%;
 
-    --muted: 234 20% 96%;
-    --muted-foreground: 234 15% 46%;
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 4% 46%;
 
-    --accent: 234 89% 54%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 6% 10%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 234 20% 90%;
-    --input: 234 20% 90%;
-    --ring: 234 89% 54%;
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 240 6% 10%;
 
-    --radius: 1rem;
+    --radius: 0.75rem;
 
-    /* Wallet badge colors */
-    --wallet-trading: 270 70% 55%;
-    --wallet-spending: 142 70% 45%;
+    /* Wallet badge colors - solid, no gradients */
+    --wallet-trading: 262 83% 58%;
+    --wallet-spending: 152 69% 40%;
     --wallet-savings: 38 92% 50%;
 
-    /* Glassmorphism */
-    --glass-bg: 234 30% 98% / 0.7;
-    --glass-border: 234 30% 90% / 0.5;
-    --glass-shadow: 234 89% 54% / 0.08;
-
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(234 89% 54%), hsl(250 89% 60%));
-    --gradient-glow: radial-gradient(circle at center, hsl(234 89% 54% / 0.3), transparent 70%);
-    --gradient-hero-bg: radial-gradient(ellipse at top, hsl(234 89% 97%), hsl(0 0% 100%) 60%);
-
-    /* Shadows */
-    --shadow-card: 0 4px 24px -4px hsl(234 89% 54% / 0.08);
-    --shadow-card-hover: 0 8px 32px -8px hsl(234 89% 54% / 0.15);
-    --shadow-glow: 0 0 40px hsl(234 89% 54% / 0.4);
+    /* Clean shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -67,33 +58,33 @@
   }
 
   .dark {
-    --background: 234 47% 6%;
+    --background: 240 10% 4%;
     --foreground: 0 0% 98%;
 
-    --card: 234 40% 10%;
+    --card: 240 10% 6%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 234 40% 10%;
+    --popover: 240 10% 6%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 234 89% 64%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 6% 10%;
 
-    --secondary: 234 30% 15%;
+    --secondary: 240 5% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 234 30% 15%;
-    --muted-foreground: 234 15% 65%;
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 4% 65%;
 
-    --accent: 234 89% 64%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 240 5% 15%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62% 30%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 234 30% 18%;
-    --input: 234 30% 18%;
-    --ring: 234 89% 64%;
+    --border: 240 5% 18%;
+    --input: 240 5% 18%;
+    --ring: 0 0% 98%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -112,8 +103,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   .font-mono {
@@ -122,41 +113,26 @@
 }
 
 @layer components {
-  .glass-card {
-    @apply bg-[hsl(var(--glass-bg))] backdrop-blur-xl border border-[hsl(var(--glass-border))] rounded-2xl;
-    box-shadow: var(--shadow-card);
+  .card-modern {
+    @apply bg-card border border-border rounded-2xl;
+    box-shadow: var(--shadow-md);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
 
-  .glass-card:hover {
-    box-shadow: var(--shadow-card-hover);
-  }
-
-  .glow-button {
-    @apply relative overflow-hidden;
-    box-shadow: var(--shadow-glow);
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
-  }
-
-  .glow-button:hover {
-    box-shadow: 0 0 60px hsl(234 89% 54% / 0.6);
+  .card-modern:hover {
+    box-shadow: var(--shadow-xl);
     transform: translateY(-2px);
   }
 
-  .glow-button::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    background: var(--gradient-primary);
-    border-radius: inherit;
-    z-index: -1;
-    opacity: 0.5;
-    filter: blur(16px);
-    animation: glow-pulse 2s ease-in-out infinite;
+  .btn-primary {
+    @apply bg-foreground text-background font-semibold px-8 py-4 rounded-full;
+    @apply hover:bg-foreground/90 transition-all duration-200;
+    @apply hover:scale-[1.02] active:scale-[0.98];
   }
 
-  @keyframes glow-pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
+  .btn-secondary {
+    @apply bg-transparent text-foreground font-medium px-8 py-4 rounded-full border-2 border-foreground;
+    @apply hover:bg-foreground hover:text-background transition-all duration-200;
   }
 
   .wallet-badge-trading {
@@ -171,14 +147,19 @@
     @apply bg-[hsl(var(--wallet-savings))] text-white;
   }
 
-  .hero-gradient {
-    background: var(--gradient-hero-bg);
+  .section-padding {
+    @apply py-24 md:py-32;
   }
 
-  .text-gradient {
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .heading-xl {
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1];
+  }
+
+  .heading-lg {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
+  }
+
+  .text-balance {
+    text-wrap: balance;
   }
 }
