@@ -27,7 +27,7 @@ const features = [
 
 export const FeatureGrid = () => {
   return (
-    <section className="section-padding bg-secondary/50">
+    <section className="section-padding">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
