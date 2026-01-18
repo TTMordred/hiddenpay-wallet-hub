@@ -59,7 +59,7 @@ export const DocsLayout = ({ children, title, description, lastUpdated }: DocsLa
 
               {/* External links */}
               <a
-                href="https://github.com/hiddenpay"
+                href="https://github.com/PayTaskdz/Sui-Payment"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:flex p-2 hover:bg-secondary rounded-lg transition-colors text-muted-foreground hover:text-foreground"
@@ -156,7 +156,7 @@ export const DocsLayout = ({ children, title, description, lastUpdated }: DocsLa
                   </div>
                 </div>
                 <a
-                  href="https://github.com/hiddenpay/docs/edit/main/docs"
+                  href="https://github.com/PayTaskdz/Sui-Payment/edit/main/docs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"

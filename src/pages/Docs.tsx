@@ -286,7 +286,7 @@ const signature = await keypair.signPersonalMessage(
         <h2 className="text-2xl font-bold tracking-tight mb-4">Resources</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <a
-            href="https://github.com/hiddenpay"
+            href="https://github.com/PayTaskdz/Sui-Payment"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 p-4 rounded-xl border border-border hover:border-foreground/20 transition-colors"
