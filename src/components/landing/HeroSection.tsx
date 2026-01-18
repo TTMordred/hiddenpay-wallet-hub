@@ -79,13 +79,13 @@ export const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="btn-primary inline-flex items-center justify-center gap-2">
+              <a href="https://hiddenpay.xyz" className="btn-primary inline-flex items-center justify-center gap-2">
                 Reserve Username
                 <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="btn-secondary">
+              </a>
+              <a href="https://hiddenpay.xyz" className="btn-secondary inline-flex items-center justify-center">
                 See How It Works
-              </button>
+              </a>
             </div>
           </motion.div>
 
