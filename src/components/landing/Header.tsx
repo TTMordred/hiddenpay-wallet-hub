@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Menu } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
@@ -12,12 +13,12 @@ export const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-foreground flex items-center justify-center">
               <span className="text-background font-bold text-sm">H</span>
             </div>
             <span className="font-bold text-lg">HiddenPay</span>
-          </div>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-8">
@@ -33,12 +34,12 @@ export const Header = () => {
             >
               Security
             </a>
-            <a
-              href="#docs"
+            <Link
+              to="/docs"
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
               Docs
-            </a>
+            </Link>
           </nav>
 
           {/* CTA */}
